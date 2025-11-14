@@ -127,4 +127,7 @@ section {
   opacity: 0;
 }
 
+section.visible {
+  opacity: 1;
+}
 
