@@ -79,6 +79,32 @@
   <footer>
     <p>© 2025 Comitari. Creado con amor y oro digital.</p>
   </footer>
+<script>
+  // Ritual de Reconexión
+  document.addEventListener('DOMContentLoaded', () => {
+    const reconectarBtn = document.querySelector('.ritual-card:nth-child(1) button');
+    const reconectarInput = document.querySelector('.ritual-card:nth-child(1) input');
+
+    reconectarBtn.addEventListener('click', () => {
+      const palabra = reconectarInput.value.trim();
+      if (palabra) {
+        alert(`Tu palabra dorada "${palabra}" ha sido sellada en tu ritual de reconexión ✨`);
+        reconectarInput.value = '';
+      } else {
+        alert("Escribe una palabra que te reconecte contigo.");
+      }
+    });
+
+    // Ritual de Transformación
+    const transformarBtn = document.querySelector('.ritual-card:nth-child(2) button');
+    const emocionSelect = document.querySelector('.ritual-card:nth-child(2) select');
+
+    transformarBtn.addEventListener('click', () => {
+      const emocion = emocionSelect.value;
+      alert(`Has transmutado la emoción "${emocion}" en sabiduría dorada 🔥`);
+    });
+  });
+</script>
 
 </body>
 </html>
