@@ -1,6 +1,10 @@
 /* Fondo general inspirado en Kintsugi */
 body {
   background-color: #0f0f0f;
+  background-image: url('fondo-dorado.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #fdfaf6;
   font-family: 'Georgia', serif;
   margin: 0;
