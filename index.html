@@ -52,59 +52,138 @@
     <h2>Filosofía</h2>
     <blockquote>“No estás roto. Estás en proceso de ser arte.”</blockquote>
   </section>
-<section id="rituales" class="visible">
-  <h2>Activa tu ritual</h2>
-  <div class="rituales-grid">
-    <div class="ritual-card">
-      <h3>🌿 Ritual de Reconexión</h3>
-      <p>Escribe una palabra que te devuelva al presente.</p>
-      <input type="text" placeholder="Tu palabra dorada">
-      <button>Activar</button>
-    </div>
-    <div class="ritual-card">
-      <h3>🔥 Ritual de Transformación</h3>
-      <p>Elige una emoción que quieras transmutar.</p>
-      <select>
-        <option>Tristeza</option>
-        <option>Miedo</option>
-        <option>Rabia</option>
-        <option>Duda</option>
-      </select>
-      <button>Transmutar</button>
-    </div>
-  </div>
-</section>
 
+  <section id="rituales" class="visible">
+    <h2>Activa tu ritual</h2>
+    <div class="rituales-grid">
+      <div class="ritual-card">
+        <h3>🌿 Ritual de Reconexión</h3>
+        <p>Escribe una palabra que te devuelva al presente.</p>
+        <input type="text" id="palabraDorada" placeholder="Tu palabra dorada">
+        <button onclick="activarReconexion()">Activar</button>
+      </div>
+      <div class="ritual-card">
+        <h3>🔥 Ritual de Transformación</h3>
+        <p>Elige una emoción que quieras transmutar.</p>
+        <select id="emocion">
+          <option>Tristeza</option>
+          <option>Miedo</option>
+          <option>Rabia</option>
+          <option>Duda</option>
+        </select>
+        <button onclick="transmutarEmocion()">Transmutar</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonios-rituales" class="visible">
+    <h2>Testimonios rituales</h2>
+    <p>Comparte tu palabra dorada o una frase que haya surgido en tu ritual.</p>
+    <textarea id="testimonioInput" placeholder="Escribe tu testimonio simbólico aquí..."></textarea>
+    <button onclick="guardarTestimonio()">Compartir</button>
+
+    <div id="testimoniosGuardados">
+      <h3>🌟 Palabras compartidas:</h3>
+      <ul id="listaTestimonios"></ul>
+      <div id="compartirTestimonio">
+        <p>¿Quieres compartir tu testimonio?</p>
+        <button onclick="compartirUltimoTestimonio()">Compartir en redes</button>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <p>© 2025 Comitari. Creado con amor y oro digital.</p>
   </footer>
-<script>
-  // Ritual de Reconexión
-  document.addEventListener('DOMContentLoaded', () => {
-    const reconectarBtn = document.querySelector('.ritual-card:nth-child(1) button');
-    const reconectarInput = document.querySelector('.ritual-card:nth-child(1) input');
 
-    reconectarBtn.addEventListener('click', () => {
-      const palabra = reconectarInput.value.trim();
+  <audio id="ritualSonido" src="ritual-sonido.mp3" preload="auto"></audio>
+  <div id="particulas"></div>
+
+  <script>
+    function reproducirSonido() {
+      const sonido = document.getElementById("ritualSonido");
+      if (sonido) sonido.play();
+    }
+
+    function mostrarParticulas() {
+      const contenedor = document.getElementById("particulas");
+      contenedor.classList.add("activo");
+      setTimeout(() => {
+        contenedor.classList.remove("activo");
+      }, 1200);
+    }
+
+    function activarReconexion() {
+      const palabra = document.getElementById("palabraDorada").value.trim();
       if (palabra) {
+        localStorage.setItem("palabraDorada", palabra);
         alert(`Tu palabra dorada "${palabra}" ha sido sellada en tu ritual de reconexión ✨`);
-        reconectarInput.value = '';
+        document.getElementById("palabraDorada").value = "";
+        reproducirSonido();
+        mostrarParticulas();
       } else {
         alert("Escribe una palabra que te reconecte contigo.");
       }
-    });
+    }
 
-    // Ritual de Transformación
-    const transformarBtn = document.querySelector('.ritual-card:nth-child(2) button');
-    const emocionSelect = document.querySelector('.ritual-card:nth-child(2) select');
+    function transmutarEmocion() {
+      const emocion = document.getElementById("emocion").value;
+      document.body.classList.add("transmutando");
+      reproducirSonido();
+      mostrarParticulas();
+      setTimeout(() => {
+        alert(`Has transmutado la emoción "${emocion}" en sabiduría dorada 🔥`);
+        document.body.classList.remove("transmutando");
+      }, 1000);
+    }
 
-    transformarBtn.addEventListener('click', () => {
-      const emocion = emocionSelect.value;
-      alert(`Has transmutado la emoción "${emocion}" en sabiduría dorada 🔥`);
+    function guardarTestimonio() {
+      const input = document.getElementById("testimonioInput");
+      const texto = input.value.trim();
+      if (texto) {
+        let testimonios = JSON.parse(localStorage.getItem("testimoniosRituales") || "[]");
+        testimonios.unshift(texto);
+        localStorage.setItem("testimoniosRituales", JSON.stringify(testimonios));
+        input.value = "";
+        mostrarTestimonios();
+        reproducirSonido();
+        mostrarParticulas();
+        alert("Tu testimonio ha sido compartido con luz dorada ✨");
+      } else {
+        alert("Escribe algo antes de compartir tu testimonio.");
+      }
+    }
+
+    function mostrarTestimonios() {
+      const lista = document.getElementById("listaTestimonios");
+      lista.innerHTML = "";
+      const testimonios = JSON.parse(localStorage.getItem("testimoniosRituales") || "[]");
+      testimonios.slice(0, 10).forEach((t) => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        lista.appendChild(li);
+      });
+    }
+
+    function compartirUltimoTestimonio() {
+      const testimonios = JSON.parse(localStorage.getItem("testimoniosRituales") || "[]");
+      if (testimonios.length === 0) {
+        alert("No hay testimonios para compartir aún.");
+        return;
+      }
+      const texto = encodeURIComponent(`🌟 Mi testimonio ritual en Comitari:\n"${testimonios[0]}"\n✨ Descubre más en https://sebas-fox.github.io/Comitari-Web/`);
+      const url = `https://twitter.com/intent/tweet?text=${texto}`;
+      window.open(url, "_blank");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const palabraGuardada = localStorage.getItem("palabraDorada");
+      if (palabraGuardada) {
+        console.log(`Palabra dorada recordada: ${palabraGuardada}`);
+      }
+      mostrarTestimonios();
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
