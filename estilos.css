@@ -15,7 +15,7 @@ body {
 header {
   text-align: center;
   padding: 2em;
-  background-color: #1a1a1a;
+  background-color: rgba(26, 26, 26, 0.9);
 }
 
 .logo {
@@ -42,6 +42,13 @@ h1 {
 section {
   padding: 2em;
   border-top: 1px solid #d4af37;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Activación de animación */
+section.visible {
+  opacity: 1;
 }
 
 /* Títulos de sección */
@@ -49,11 +56,16 @@ h2 {
   font-size: 1.8em;
   color: #d4af37;
   margin-bottom: 0.5em;
+  transition: color 0.3s ease;
+}
+
+h2:hover {
+  color: #f7d774;
 }
 
 /* Manifiesto emocional */
 #manifiesto {
-  background-color: #1a1a1a;
+  background-color: rgba(26, 26, 26, 0.9);
   color: #d4af37;
   font-style: italic;
 }
@@ -70,12 +82,12 @@ li {
 }
 
 li:hover {
-  color: #d4af37;
+  color: #f7d774;
 }
 
 /* Testimonios poéticos */
 #testimonios {
-  background-color: #1a1a1a;
+  background-color: rgba(26, 26, 26, 0.9);
   color: #d4af37;
 }
 
@@ -84,6 +96,11 @@ blockquote {
   border-left: 4px solid #d4af37;
   padding-left: 1em;
   margin: 1em 0;
+  transition: color 0.3s ease;
+}
+
+blockquote:hover {
+  color: #f7d774;
 }
 
 /* Pie de página */
@@ -95,6 +112,7 @@ footer {
   color: #b08d57;
 }
 
+/* Animación suave */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -104,30 +122,5 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-section {
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-section {
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-}
-
-section.visible {
-  opacity: 1;
 }
 
