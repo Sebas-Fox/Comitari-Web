@@ -20,12 +20,14 @@ header {
   margin: 0 auto 1em auto;
 }
 
+/* Título principal */
 h1 {
   font-size: 2.5em;
   color: #d4af37;
   margin: 0;
 }
 
+/* Subtítulo poético */
 .subtitulo {
   font-style: italic;
   color: #b08d57;
@@ -45,14 +47,14 @@ h2 {
   margin-bottom: 0.5em;
 }
 
-/* Manifiesto */
+/* Manifiesto emocional */
 #manifiesto {
   background-color: #1a1a1a;
   color: #d4af37;
   font-style: italic;
 }
 
-/* Lista de funciones */
+/* Lista de rituales */
 ul {
   list-style-type: none;
   padding: 0;
