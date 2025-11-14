@@ -187,4 +187,9 @@ footer {
 .ritual-card button:hover {
   background-color: #f7d774;
 }
+.ritual-card button:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 10px #f7d774;
+}
+
 
