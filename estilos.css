@@ -6,6 +6,14 @@ body {
   padding: 0;
 }
 
+body {
+  background-color: #0f0f0f;
+  background-image: url('textura-dorada.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fdfaf6;
+}
+
 header {
   background: linear-gradient(to right, #d4af37, #fdfaf6);
   padding: 2em;
@@ -39,4 +47,12 @@ footer {
 .logo {
   width: 120px;
   margin-bottom: 1em;
+}
+
+#manifiesto {
+  background-color: #1a1a1a;
+  color: #d4af37;
+  padding: 2em;
+  font-style: italic;
+  border-top: 1px solid #d4af37;
 }
