@@ -295,3 +295,16 @@ body.transmutando {
   background-color: #f7d774;
 }
 
+#compartirTestimonio button + button {
+  margin-left: 1em;
+}
+
+#descargarImagen {
+  display: block;
+  margin-top: 1em;
+  color: #f7d774;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+
