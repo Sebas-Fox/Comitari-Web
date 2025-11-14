@@ -124,3 +124,67 @@ footer {
   }
 }
 
+/* Sección de rituales interactivos */
+#rituales {
+  background-color: rgba(26, 26, 26, 0.9);
+  color: #d4af37;
+  padding: 2em;
+}
+
+.rituales-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+.ritual-card {
+  background-color: #0f0f0f;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  padding: 1.5em;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.ritual-card:hover {
+  transform: scale(1.05);
+}
+
+.ritual-card h3 {
+  margin-bottom: 0.5em;
+  color: #f7d774;
+}
+
+.ritual-card p {
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+.ritual-card input,
+.ritual-card select {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #d4af37;
+  background-color: #1a1a1a;
+  color: #fdfaf6;
+  border-radius: 4px;
+}
+
+.ritual-card button {
+  background-color: #d4af37;
+  color: #0f0f0f;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ritual-card button:hover {
+  background-color: #f7d774;
+}
+
