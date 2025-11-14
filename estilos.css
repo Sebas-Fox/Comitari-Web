@@ -1,72 +1,91 @@
+/* Fondo general inspirado en Kintsugi */
 body {
+  background-color: #0f0f0f;
+  color: #fdfaf6;
   font-family: 'Georgia', serif;
-  background-color: #fdfaf6;
-  color: #2c2c2c;
   margin: 0;
   padding: 0;
 }
 
-body {
-  background-color: #0f0f0f;
-  background-image: url('textura-dorada.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fdfaf6;
-}
-
+/* Encabezado con logo */
 header {
-  background: linear-gradient(to right, #d4af37, #fdfaf6);
-  padding: 2em;
   text-align: center;
-}
-
-.subtitulo {
-  font-style: italic;
-  color: #8a6d3b;
-}
-
-section {
   padding: 2em;
-  border-top: 1px solid #e0d8c3;
-}
-
-blockquote {
-  font-style: italic;
-  color: #b08d57;
-  border-left: 4px solid #d4af37;
-  padding-left: 1em;
-}
-
-footer {
-  background-color: #f3efe7;
-  text-align: center;
-  padding: 1em;
-  font-size: 0.9em;
+  background-color: #1a1a1a;
 }
 
 .logo {
   width: 120px;
-  margin-bottom: 1em;
+  display: block;
+  margin: 0 auto 1em auto;
 }
 
-#manifiesto {
-  background-color: #1a1a1a;
+h1 {
+  font-size: 2.5em;
   color: #d4af37;
-  padding: 2em;
+  margin: 0;
+}
+
+.subtitulo {
   font-style: italic;
+  color: #b08d57;
+  margin-top: 0.5em;
+}
+
+/* Secciones generales */
+section {
+  padding: 2em;
   border-top: 1px solid #d4af37;
 }
 
+/* Títulos de sección */
+h2 {
+  font-size: 1.8em;
+  color: #d4af37;
+  margin-bottom: 0.5em;
+}
+
+/* Manifiesto */
+#manifiesto {
+  background-color: #1a1a1a;
+  color: #d4af37;
+  font-style: italic;
+}
+
+/* Lista de funciones */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 0.5em 0;
+  transition: color 0.3s ease;
+}
+
+li:hover {
+  color: #d4af37;
+}
+
+/* Testimonios poéticos */
 #testimonios {
   background-color: #1a1a1a;
   color: #d4af37;
-  padding: 2em;
 }
 
 blockquote {
   font-style: italic;
   border-left: 4px solid #d4af37;
   padding-left: 1em;
-  margin-bottom: 1em;
+  margin: 1em 0;
+}
+
+/* Pie de página */
+footer {
+  background-color: #0f0f0f;
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  color: #b08d57;
 }
 
