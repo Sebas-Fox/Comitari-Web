@@ -88,6 +88,8 @@
       <div id="compartirTestimonio">
         <p>¿Quieres compartir tu testimonio?</p>
         <button onclick="compartirUltimoTestimonio()">Compartir en redes</button>
+        <button onclick="generarImagenTestimonio()">Crear imagen poética</button>
+        <a id="descargarImagen" style="display:none;" download="testimonio-comitari.png">Descargar imagen poética</a>
       </div>
     </div>
   </section>
@@ -98,6 +100,7 @@
 
   <audio id="ritualSonido" src="ritual-sonido.mp3" preload="auto"></audio>
   <div id="particulas"></div>
+  <canvas id="canvasTestimonio" style="display:none;"></canvas>
 
   <script>
     function reproducirSonido() {
@@ -176,81 +179,31 @@
       window.open(url, "_blank");
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const palabraGuardada = localStorage.getItem("palabraDorada");
-      if (palabraGuardada) {
-        console.log(`Palabra dorada recordada: ${palabraGuardada}`);
+    function generarImagenTestimonio() {
+      const testimonios = JSON.parse(localStorage.getItem("testimoniosRituales") || "[]");
+      if (testimonios.length === 0) {
+        alert("No hay testimonios para convertir en imagen.");
+        return;
       }
-      mostrarTestimonios();
-    });
-  </script>
-function generarImagenTestimonio() {
-  const testimonios = JSON.parse(localStorage.getItem("testimoniosRituales") || "[]");
-  if (testimonios.length === 0) {
-    alert("No hay testimonios para convertir en imagen.");
-    return;
-  }
 
-  const texto = testimonios[0];
-  const canvas = document.getElementById("canvasTestimonio");
-  const ctx = canvas.getContext("2d");
+      const texto = testimonios[0];
+      const canvas = document.getElementById("canvasTestimonio");
+      const ctx = canvas.getContext("2d");
 
-  canvas.width = 1080;
-  canvas.height = 1080;
+      canvas.width = 1080;
+      canvas.height = 1080;
 
-  // Fondo dorado oscuro
-  ctx.fillStyle = "#0f0f0f";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0f0f0f";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Textura dorada (simulada con puntos)
-  for (let i = 0; i < 500; i++) {
-    ctx.fillStyle = `rgba(212,175,55,${Math.random() * 0.2})`;
-    ctx.beginPath();
-    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, 2 * Math.PI);
-    ctx.fill();
-  }
+      for (let i = 0; i < 500; i++) {
+        ctx.fillStyle = `rgba(212,175,55,${Math.random() * 0.2})`;
+        ctx.beginPath();
+        ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, 2 * Math.PI);
+        ctx.fill();
+      }
 
-  // Texto poético
-  ctx.fillStyle = "#f7d774";
-  ctx.font = "italic 32px Georgia";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
 
-  const lines = dividirTextoEnLineas(ctx, texto, 800);
-  lines.forEach((line, i) => {
-    ctx.fillText(line, canvas.width / 2, 400 + i * 40);
-  });
-
-  // Firma
-  ctx.font = "20px Georgia";
-  ctx.fillStyle = "#b08d57";
-  ctx.fillText("comitari.org", canvas.width / 2, 1000);
-
-  // Mostrar enlace de descarga
-  const enlace = document.getElementById("descargarImagen");
-  enlace.href = canvas.toDataURL("image/png");
-  enlace.style.display = "inline-block";
-  enlace.textContent = "Descargar imagen poética";
-}
-
-function dividirTextoEnLineas(ctx, texto, maxWidth) {
-  const palabras = texto.split(" ");
-  const lineas = [];
-  let linea = "";
-
-  for (let palabra of palabras) {
-    const prueba = linea + palabra + " ";
-    const ancho = ctx.measureText(prueba).width;
-    if (ancho > maxWidth) {
-      lineas.push(linea.trim());
-      linea = palabra + " ";
-    } else {
-      linea = prueba;
-    }
-  }
-  if (linea) lineas.push(linea.trim());
-  return lineas;
-}
 
 </body>
 </html>
