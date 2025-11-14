@@ -56,3 +56,17 @@ footer {
   font-style: italic;
   border-top: 1px solid #d4af37;
 }
+
+#testimonios {
+  background-color: #1a1a1a;
+  color: #d4af37;
+  padding: 2em;
+}
+
+blockquote {
+  font-style: italic;
+  border-left: 4px solid #d4af37;
+  padding-left: 1em;
+  margin-bottom: 1em;
+}
+
